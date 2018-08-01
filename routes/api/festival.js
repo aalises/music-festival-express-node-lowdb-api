@@ -12,7 +12,7 @@ router.all('/',function(req,res,next){
 });
 
 router.all('/:id',function(req,res,next){
-    req.app.set('search_query',{...req.app.get('search_query'),festival_id: req.params.id ? req.params.id : '',show_all_info: true});
+    req.app.set('search_query',{...req.app.get('search_query'),festival_id: (req.params.id && req.params.id !=="lineup") ? req.params.id : '',show_all_info: true});
     next();
 });
 

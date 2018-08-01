@@ -13,7 +13,8 @@ router.use('*',(req,res) => {
     res.json({...queryObject, method: req.method});
     switch(req.method){
         case 'PUT':
-            dbInstance.write(queryObject);
+            if(!queryObject.festival_id) console.log("Cannot write: Festival name is mandatory")
+            else dbInstance.write(queryObject);
         break;
     }
 });

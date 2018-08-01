@@ -11,7 +11,7 @@ router.use('/festivals', festivalRouter);
 router.use('*',(req,res) => {  
     const queryObject = req.app.get('search_query');
     res.json({...queryObject, method: req.method});
-    switch(method){
+    switch(req.method){
         case 'PUT':
             dbInstance.write(queryObject);
         break;

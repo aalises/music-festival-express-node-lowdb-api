@@ -1,26 +1,64 @@
 # Music Festival API (NodeJS + Express + lowDB) (WIP)
 
-Tiny example of a basic API designed using Express and lowDB for Database for music festivals.
+Tiny example/exercise of a basic API with CRUD designed using Express and lowDB as database for music festivals. You can add to the lineup of the festivals some bands with day and stage information associated. The routes are defined as follows:
 
-| Path  | Parameters  | Description (GET)  |
+| Path  | Parameters  | Description  |
 |---|---|---|
-| /festivals  | -   | Gets all the festival data   |
-| /festivals/:id  | id : string -> name of the festival   | Gets information of a given festival   |
-| /festivals/:id?/lineup   | id(optional) : string -> name of the festival   | Gets the lineup of a given festival or the lineup of all of them   |
-| /festivals/:id?/lineup/stage/:stageID  | stageID : string -> name of the stage   | Gets the lineup of a given festival filtering by a specific stage   |
-| /festivals/:id?/lineup/day/:dayID   | dayID : string -> weekday   | Gets the lineup of a given festival filtering by weekday   |
-| /festivals/:id?/lineup/band/:bandID   | bandID : string -> name of the band   | Gets the lineup of a given festival filtering by band name   |
+| /festivals  | -   | Festival data   |
+| /festivals/:id  | id : string -> name of the festival   | Specify given festival by name   |
+| /festivals/:id?/lineup   | id(optional) : string -> name of the festival   |  lineup of a given festival or lineup of all the festivals on the DB  |
+| /festivals/:id?/lineup/stage/:stageID  | stageID : string -> name of the stage   | lineup of a given festival specifying stage   |
+| /festivals/:id?/lineup/day/:dayID   | dayID : string -> weekday   | lineup of a given festival specifying weekday   |
+| /festivals/:id?/lineup/band/:bandID   | bandID : string -> name of the band   | lineup of a given festival by band name   |
 
-Day, stage and Band parameters can be put into a single query to add to the database, the id of the festival is optional to filter by festival or show all the lineups that match the filtering. The routes return an object with all the information to perform CRUD operations on a database.
+*Day, stage and Band* parameters can be combined into a single query to the database (e.g `/festivals/coolfest/lineup/stage/superstage/day/thursday/band/radiohead`), the id of the festival is optional to filter by festival or perform operations on all the lineups that match the filtering.
 
+## API Data
+The data managed by the API is an object with the following fields:
+|Field  | Type  | Mandatory  |
+|---|---|---|
+| festival_id  | string   | **Yes** for (PUT , DELETE , PATCH) , **No** for (GET , POST) (gets all the festivals entries matching if not present)   |
+| stage  | string   | **No**   |
+| day   | string   |  **No**  |
+| band  | string   | **No**   |
+
+## API CRUD Methods
+When making the request to the API using the usual HTTP Verbs (PUT , GET , POST , PATCH , DELETE), the API returns the following responses:
+
+### Create (PUT)
 ```
-const search_query = {
-    show_all_info: false, //Show all the festival info not just the lineup
-    festival_id: '', //Name of the festival
-    stage: '', //Stage name
-    day: '', //Weekday
-    band: '' //Band name
+// Successful response
+{
+    "success": 1,
+    "message": "The entry has been succesfully added to the database"
+}
+ 
+// Unsuccessful response
+{
+    "success": 0,
+    "error": "Error Message"
+}
+```
+### Read (POST,GET)
+### Update (PATCH)
+### Delete (DELETE)
+
+## Festival Model
+The object model that our database stores:
+```
+festivals: {
+  [
+    //festival entry
+    {festival_id: "", 
+        lineup: 
+        [
+            {band: "", stage: "", day: "" }, //lineup entry
+            ...
+        ]
+    },
+    ...  
+  ]
 }
 ```
 
-*TODO:* Use lowDB to perform CRUD, set a data model. Maybe add typescript integration.
+*TODO:* Use lowDB to perform CRUD, Maybe add typescript integration.

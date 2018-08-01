@@ -6,16 +6,16 @@ module.exports = festivalModel = class {
         const festival_exists = this.checkFestivalExists(params.festival_id,db);
 
         return festival_exists ? {
+            band: params.band,
             stage: params.stage,
-            day: params.day,
-            band: params.band
+            day: params.day
         } : {
             festival_id: params.festival_id,
             lineup: [
                 {
+                    band: params.band,
                     stage: params.stage,
-                    day: params.day,
-                    band: params.band
+                    day: params.day
                 }
             ]
         }

@@ -1,0 +1,34 @@
+{
+  "festivals": [
+    {
+      "festival_id": "Nihilist Fest",
+      "lineup": [
+        {
+          "stage": "Cioran",
+          "day": "Thursday",
+          "band": "The High Street Thunder Nipples"
+        },
+        {
+          "stage": "Ligotti",
+          "day": "Friday",
+          "band": "Soothing Tuna Fish"
+        }
+      ]
+    },
+    {
+      "festival_id": "Lords of the Guacamole Festival",
+      "lineup": [
+        {
+          "stage": "Nachos",
+          "day": "Saturday",
+          "band": "OverChurros"
+        },
+        {
+          "stage": "Quesadilla",
+          "day": "Saturday",
+          "band": "UltraGuac"
+        }
+      ]
+    }
+  ]
+}

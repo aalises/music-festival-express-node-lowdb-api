@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();     
 const port = process.env.PORT || 8080;   
-
 const indexRouter = require('./routes/index');
 
 //Object containing all the params extracted by the request to send to Firebase
@@ -9,7 +8,8 @@ const search_query = {
     show_all_info: false, //Show all the festival info not just the lineup
     festival_id: '',
     stage: '',
-    day: ''
+    day: '',
+    band: ''
 }
 
 app.use((req,res,next) => {

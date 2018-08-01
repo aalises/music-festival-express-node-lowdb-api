@@ -1,6 +1,6 @@
-# Music Festival API (NodeJS + Express + Firebase) (WIP)
+# Music Festival API (NodeJS + Express + lowDB) (WIP)
 
-Tiny example of a basic API designed using Express and Firebase for Database for music festivals.
+Tiny example of a basic API designed using Express and lowDB for Database for music festivals.
 
 | Path  | Parameters  | Description   |
 |---|---|---|
@@ -21,4 +21,4 @@ const search_query = {
 }
 ```
 
-*TODO:* Connect to Firebase to perform CRUD, set a data model. Maybe add typescript integration.
+*TODO:* Use lowDB to perform CRUD, set a data model. Maybe add typescript integration.

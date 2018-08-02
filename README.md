@@ -15,6 +15,7 @@ Tiny example/exercise of a basic API with CRUD designed using Express and lowDB 
 
 ## API Data
 The data managed by the API is an object with the following fields:
+
 |Field  | Type  | Mandatory  |
 |---|---|---|
 | festival_id  | string   | **Yes** for (PUT , DELETE , PATCH) , **No** for (GET , POST) (gets all the festivals entries matching if not present)   |
